@@ -7,13 +7,12 @@ import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.service import Service  # Keep this one
 from selenium.webdriver.chrome.options import Options
 from PIL import Image
 from io import BytesIO
 from colorama import Fore, Style
 import pyfiglet
-from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 options = webdriver.ChromeOptions()
