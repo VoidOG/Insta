@@ -16,11 +16,13 @@ import pyfiglet
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Set up WebDriver options
-options = Options()
-options.add_argument("--headless")  
-options.add_argument("--no-sandbox")  
-options.add_argument("--disable-dev-shm-usage")  
-options.add_argument("--disable-blink-features=AutomationControlled")  
+options = webdriver.ChromeOptions()
+options.add_argument("--headless")  # Run Chrome in headless mode
+options.add_argument("--no-sandbox")  # Bypass OS security restrictions
+options.add_argument("--disable-dev-shm-usage")  # Prevent limited /dev/shm issues
+options.add_argument("--remote-debugging-port=9222")  # Avoid DevToolsActivePort issue
+options.add_argument("--disable-blink-features=AutomationControlled")  # Hide Selenium usage
+options.add_argument("--window-size=1920,1080")  # Set screen size
 
 # Display ASCII Art
 ascii_banner = pyfiglet.figlet_format("INSTAGRAM BOT", font="slant")
@@ -87,7 +89,7 @@ for _ in range(num_accounts):
     options.add_argument(f"--proxy-server={proxy}")
 
     # Initialize WebDriver
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(service=Service("/usr/bin/chromedriver"), options=options)
     driver.get("https://www.instagram.com/accounts/emailsignup/")
     
     time.sleep(5)
