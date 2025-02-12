@@ -13,6 +13,13 @@ from PIL import Image
 from io import BytesIO
 from colorama import Fore, Style
 import pyfiglet
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
+options = webdriver.ChromeOptions()
+options.add_argument("--headless")  # Optional: Run without GUI
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 # Display ASCII Art
 ascii_banner = pyfiglet.figlet_format("INSTAGRAM BOT", font="slant")
